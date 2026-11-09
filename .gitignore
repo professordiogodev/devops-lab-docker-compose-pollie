@@ -1,0 +1,4 @@
+.DS_Store
+.env
+# the application source is cloned by setup.sh
+/pollie/

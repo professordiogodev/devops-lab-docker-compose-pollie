@@ -1,0 +1,2 @@
+# YOUR FILE. Development settings. Docker Compose loads this file automatically next to compose.yaml.
+services: {}

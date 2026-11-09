@@ -1,0 +1,6 @@
+# YOUR FILE. Describe the whole Pollie stack. Requirements are in README.md (Part 2).
+# Project name (so container names are pollie-api-1, ...) and service names are fixed:
+#   web, api, worker, db, redis   (and the optional profile services: adminer, seed)
+name: pollie
+
+services: {}
