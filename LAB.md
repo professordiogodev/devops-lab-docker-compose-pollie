@@ -2,11 +2,22 @@
 
 ## The situation
 
-Last week's Pollie stack worked, and then a new colleague tried to run it. They started the API before the database was ready, forgot a network, published the database port "to debug" and left it open, and spent an afternoon on it. Your lead has had enough:
+Welcome to the team chat of your second week. This is what you find when you scroll up:
 
-*"One file. `docker compose up` and it works, in the right order, on a clean machine. Developers get convenient ports and debug logs. Production publishes one port, restarts always and has limits. And I want sample data on demand without it running all the time."*
+```text
+#pollie-dev                                                        Mon 16:20
+joana    I started the API and it crashed. is the database broken?
+rui      no, you started it before postgres was ready. happens every week
+joana    ok, I also opened the db port "just to debug" and forgot about it
+rui      ...it has been open to the whole office wifi since Wednesday
+lead     enough. one file. docker compose up and it works, in the right order,
+         on a clean machine. devs get ports and debug logs. production
+         publishes ONE port, restarts always and has limits.
+         and I want sample data on demand without it running all day.
+lead     @you
+```
 
-You will write that file (and its two siblings), then break the start order on purpose to see why the details matter.
+Last week's Pollie stack worked, and then a new colleague tried to run it. You will write that file (and its two siblings), then break the start order on purpose to see why the details matter. The work has two acts: **Act 1** is the developer's file and a working day with it; after an **interval** (a message from the release meeting), **Act 2** is production, and the proof that `down` is not `destroy`.
 
 > **Your mission**
 > - Describe the whole Pollie stack in `compose.yaml`, with health checks and an honest start order
@@ -19,7 +30,7 @@ You will write that file (and its two siblings), then break the start order on p
 
 ---
 
-## Part 0 - Set the scene
+## Part 0 - Act 1: set the scene
 
 Fork this repository, clone your fork, and run:
 
@@ -118,6 +129,12 @@ Start the stack and use it:
 3. `docker compose --profile seed run --rm seed`, then reload the page.
 
 > **Predict** After step 2, how many containers does `docker compose ps` list? Is Adminer part of the default `docker compose up`?
+
+---
+
+## Interval - Thursday, the release meeting
+
+The lead walks back from the release meeting: *"Good news: your stack runs on every laptop. Bad news: the release is tomorrow, and the production server has 2 GB of memory and the security team will look at its open ports. Same files, different behaviour, please."*
 
 ---
 
